@@ -100,11 +100,12 @@ class ReportIncidentCommandHandler
                 null,
                 null,
                 null,
+                null,
                 null
             ));
         }
 
-        $incident->notify = (bool) $command->notify;
+        $incident->update(['notify' => (bool) $command->notify]);
 
         event(new IncidentWasReportedEvent($incident));
 
